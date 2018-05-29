@@ -1,0 +1,10 @@
+// @flow
+declare type FN = (...args: any[]) => any
+
+declare export function getIn <O: {}, K, V>(obj: O, key: K): V
+declare export function setIn <O: {}, K, V>(obj: O, key: K, value: V): O
+
+declare export function composeReturn <R>(returnVal: R, fn: (mixed[]) => any): (mixed[]) => R
+
+declare export function onCatch <Args: [], R>(fn: (...Args) => R, callback: (e: Error, ...Args) => void): (...Args) => R
+declare export function throwIf (condition: boolean, exception: Error|() => Error): boolean

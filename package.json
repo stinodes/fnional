@@ -1,0 +1,21 @@
+{
+  "name": "fnional",
+  "version": "0.0.0",
+  "description": "Functional Programming inpired helper-functions",
+  "main": "src/index.js",
+  "scripts": {
+    "flow": "flow",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "functional",
+    "programming",
+    "fp",
+    "javascript"
+  ],
+  "author": "stinodes",
+  "license": "ISC",
+  "dependencies": {
+    "flow-bin": "0.67"
+  }
+}
