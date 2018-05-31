@@ -4,8 +4,9 @@
   "description": "Functional Programming inpired helper-functions",
   "main": "src/index.js",
   "scripts": {
-    "flow": "flow",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "test-ci": "jest",
+    "flow": "flow"
   },
   "keywords": [
     "functional",
@@ -16,6 +17,13 @@
   "author": "stinodes",
   "license": "ISC",
   "dependencies": {
+    "babel-jest": "^23.0.1",
     "flow-bin": "0.67"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "jest": "^23.0.0-charlie.4"
   }
 }
