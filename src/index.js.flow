@@ -1,0 +1,17 @@
+// @flow
+declare type FN = (...args: any[]) => any
+
+type $GetInObject = <O: Object, K>(obj: O, key: K) => $ElementType<O, K>
+type $GetInArray = <A: Array<mixed>, K: number>(arr: A, key: K) => $ElementType<A, K>
+type $GetIn = $GetInArray&$GetInObject
+declare export var getIn: $GetIn
+
+type $SetInObject = <O: Object, K: $Keys<O>, V: $ElementType<O, K>>(obj: O, key: K, value: V) => O
+type $SetInArray = <A: Array<mixed>, K: number, V>(arr: A, key: K, value: V) => A
+type $SetIn = $SetInObject&$SetInArray
+declare export var setIn: $SetIn
+
+declare export function composeReturn <Args, R>(returnVal: R, fn: (...Args) => any): (...Args) => R
+
+declare export function onCatch <Args, R>(fn: (...Args) => R, callback: (e: Error, ...Args) => void): (...Args) => R
+declare export function throwIf (condition: boolean, exception: Error|() => Error): void
