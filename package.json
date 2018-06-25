@@ -1,6 +1,6 @@
 {
   "name": "fnional",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Functional Programming inpired helper-functions",
   "main": "src/index.js",
   "scripts": {
