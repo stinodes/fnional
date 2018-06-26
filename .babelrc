@@ -1,3 +1,12 @@
 {
-  "presets": ["env", "flow"]
+  "presets": [
+    "es2015",
+    "flow"
+  ],
+  "plugins": [
+    "transform-object-rest-spread"
+  ],
+  "ignore": [
+    "**/*.test.js"
+  ]
 }

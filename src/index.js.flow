@@ -1,6 +1,4 @@
 // @flow
-declare type FN = (...args: any[]) => any
-
 type $GetInObject = <O: Object, K>(obj: O, key: K) => $ElementType<O, K>
 type $GetInArray = <A: Array<mixed>, K: number>(arr: A, key: K) => $ElementType<A, K>
 type $GetIn = $GetInArray&$GetInObject
