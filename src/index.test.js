@@ -1,11 +1,17 @@
 // @flow
-import {composeReturn, getIn, onCatch, setIn, throwIf} from './index'
+import {composeReturn, deleteIn, getIn, onCatch, setIn, shallowMerge, throwIf} from './index'
 
 type Person = {
   name: string,
   nickname: string,
   age: number,
 }
+type Car = {
+  wheels: number,
+  brand: 'ford'|'volvo'|'porsche',
+  year?: number,
+}
+type CarPerson = {...Car, ...Person}
 
 describe('getIn', () => {
   test('returns value by string key from object literal', () => {
@@ -71,6 +77,62 @@ describe('setIn', () => {
     expect(
       arr[3]
     ).toEqual('banana')
+  })
+})
+describe('deleteIn', () => {
+  test('returns a new object of which the given key is deleted', () => {
+    const object: Car = {
+      wheels: 4,
+      brand: 'ford',
+      year: 2005,
+    }
+    const result: Car = deleteIn(object, 'year')
+    expect(
+      result.year
+    ).toEqual(undefined)
+  })
+  test('returns a new array of which the given key is deleted', () => {
+    const arr = ['potato', 'tomato', 'sprout', 'banana', 'apple']
+    const result = deleteIn(arr, 2)
+    expect(
+      result.length
+    ).toEqual(arr.length - 1)
+    expect(
+      result[2]
+    ).toEqual(arr[3])
+  })
+})
+describe('shallowMerge', () => {
+  test('shallowly merges 2 objects', () => {
+    const object1: Car = {
+      wheels: 4,
+      brand: 'ford',
+      year: 2016,
+    }
+    const object2: Car = {
+      wheels: 6,
+      brand: 'volvo',
+    }
+    const result: Car = shallowMerge(object1, object2)
+    expect(
+      result
+    ).toEqual({wheels: 6, brand: 'volvo', year: 2016})
+  })
+  test('shallowly merges 2 arrays', () => {
+    const arr1 = ['potato', 'tomato']
+    const arr2 = ['sprout', 'banana', 'apple']
+    const result = shallowMerge(arr1, arr2)
+    expect(
+      result
+    ).toEqual(['potato', 'tomato', 'sprout', 'banana', 'apple'])
+  })
+  test('throws an error when trying to merge arrays with objects', () => {
+    //$FlowFixMe
+    expect(() => shallowMerge(['test'], {prop: 'oops'}))
+      .toThrow(new TypeError('Both parameters should be either an Array or Object.'))
+    //$FlowFixMe
+    expect(() => shallowMerge({prop: 'oops'}, ['test']))
+      .toThrow(new TypeError('Both parameters should be either an Array or Object.'))
   })
 })
 describe('composeReturn', () => {

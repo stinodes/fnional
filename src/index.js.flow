@@ -1,13 +1,23 @@
 // @flow
 type $GetInObject = <O: Object, K>(obj: O, key: K) => $ElementType<O, K>
-type $GetInArray = <A: Array<mixed>, K: number>(arr: A, key: K) => $ElementType<A, K>
+type $GetInArray = <Item, K: number>(arr: Item[], key: K) => Item
 type $GetIn = $GetInArray&$GetInObject
 declare export var getIn: $GetIn
 
 type $SetInObject = <O: Object, K: $Keys<O>, V: $ElementType<O, K>>(obj: O, key: K, value: V) => O
-type $SetInArray = <A: Array<mixed>, K: number, V>(arr: A, key: K, value: V) => A
+type $SetInArray = <Item, K: number, V>(arr: Item[], key: K, value: V) => Item[]
 type $SetIn = $SetInObject&$SetInArray
 declare export var setIn: $SetIn
+
+type $DeleteInObject = <O: Object, K: $Keys<O>>(obj: O, key: K) => O
+type $DeleteInArray = <Item>(arr: Item[], key: number) => Item[]
+type $DeleteIn = $DeleteInObject&$DeleteInArray
+declare export var deleteIn: $DeleteIn
+
+type $ShallowMergeObject = <O: Object>(a: O, b: O) => O
+type $ShallowMergeArray = <Item1, Item2>(a: Item1[], b: Item2[]) => Array<Item1|Item2>
+type $ShallowMerge = $ShallowMergeObject&$ShallowMergeArray
+declare export var shallowMerge: $ShallowMerge
 
 declare export function composeReturn <Args, R>(returnVal: R, fn: (...Args) => any): (...Args) => R
 

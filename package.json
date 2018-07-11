@@ -34,5 +34,7 @@
     "babel-preset-flow": "^6.23.0",
     "flow-copy-source": "^2.0.0",
     "jest": "^23.0.0-charlie.4"
+  },
+  "jest": {
   }
 }
