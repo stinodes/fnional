@@ -1,6 +1,6 @@
 {
   "name": "fnional",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Functional Programming inpired helper-functions",
   "main": "lib/index.js",
   "files": [
@@ -35,6 +35,5 @@
     "flow-copy-source": "^2.0.0",
     "jest": "^23.0.0-charlie.4"
   },
-  "jest": {
-  }
+  "jest": {}
 }
