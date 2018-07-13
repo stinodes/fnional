@@ -13,6 +13,16 @@ export const getIn = (obj, key) => {
   return getInObject(obj, key)
 }
 
+export const getDeep = (obj, keys) =>
+  keys.reduce(
+    (prev, key) => {
+      if (typeof prev === 'object')
+        return getIn(prev, key)
+      return undefined
+    },
+    obj
+  )
+
 export const setIn = (obj, key, value) => {
   if (Array.isArray(obj)) {
     throwIfNotNumber(key)

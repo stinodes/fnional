@@ -1,5 +1,5 @@
 // @flow
-import {composeReturn, deleteIn, getIn, onCatch, setIn, shallowMerge, throwIf} from './index'
+import {composeReturn, deleteIn, getDeep, getIn, onCatch, setIn, shallowMerge, throwIf} from './index'
 
 type Person = {
   name: string,
@@ -51,6 +51,26 @@ describe('getIn', () => {
     expect(
       result
     ).toEqual(55)
+  })
+})
+describe('getDeep', () => {
+  test('returns a deep value from an object', () => {
+    const object = {
+      nestedObject: {
+        aProperty: 'Value!'
+      }
+    }
+    const result: string = getDeep(object, ['nestedObject', 'aProperty'])
+    expect(result).toEqual('Value!')
+  })
+  test('returns undefined for non-existing values', () => {
+    const object = {
+      nestedObject: {
+        aProperty: 'Value!'
+      }
+    }
+    const result = getDeep(object, ['nestedObject', 'nonExistingProp'])
+    expect(result).toEqual(undefined)
   })
 })
 describe('setIn', () => {

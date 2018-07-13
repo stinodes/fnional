@@ -26,16 +26,51 @@ Returns a property from an object.
     const person = {name: 'Stijn Tytgat', nickname: 'stinodes', age: 23}
     const age: number = getIn(person, 'age')
 
+### getDeep
+Returns a deep property from an object (or `undefined` when not found).
+
+    getDeep: (object: Object, keys: Array<*>) => any
+    
+**Example**
+
+    const object = {
+        property: {
+            nestedProperty: 'Nested Value!',
+        },
+    }
+    const var = getDeep(object, ['property', 'nestedProperty'])
+
 ### setIn
 Returns a new object with the property `key` set to `value`.
 
-    setIn: <O: Object>(object: O, key, value) => O
+    setIn: (object: Object, key, value) => O
     
 **Example**
 
     const person = {name: 'Stijn Tytgat', nickname: 'stinodes', age: 23}
     const newPerson = setIn(person, 'name', 'Not my true name >:)')
     
+### deleteIn
+Returns a new object without the property `key`.
+
+    deleteIn: (object: Object, key) => O
+    
+**Example**
+
+    const person = {name: 'Stijn Tytgat', nickname: 'stinodes', age: 23}
+    const personWithoutNickname = deleteIn(person, 'nickname')
+
+### shallowMerge
+Returns a new object made up of the properties of both passed objects.
+
+    shallowMerge: (object: Object1, object: Object2) => {...Object1, ...Object2}
+    
+**Example**
+
+    const numbers = {three: 3, two: 2, one: 1}
+    const letters = {a: a, b: b, c: c}
+    const numbersAndLetters = shallowMerge(number, letters)
+
 ### composeReturn
 Accepts a function and a value, and returns a new function always returning the passed value, ignoring the original function's return.
 

@@ -4,6 +4,9 @@ type $GetInArray = <Item, K: number>(arr: Item[], key: K) => Item
 type $GetIn = $GetInArray&$GetInObject
 declare export var getIn: $GetIn
 
+type $GetDeepObject = <O: Object, K: Array<*>, R>(obj: O, keys: K) => R
+declare export var getDeep: $GetDeepObject
+
 type $SetInObject = <O: Object, K: $Keys<O>, V: $ElementType<O, K>>(obj: O, key: K, value: V) => O
 type $SetInArray = <Item, K: number, V>(arr: Item[], key: K, value: V) => Item[]
 type $SetIn = $SetInObject&$SetInArray
