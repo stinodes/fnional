@@ -22,16 +22,15 @@
   ],
   "author": "stinodes",
   "license": "ISC",
-  "dependencies": {
-    "babel-jest": "^23.0.1",
-    "flow-bin": "0.67"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-jest": "^23.0.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
+    "flow-bin": "0.75",
     "flow-copy-source": "^2.0.0",
     "jest": "^23.0.0-charlie.4"
   },
